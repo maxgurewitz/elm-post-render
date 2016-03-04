@@ -1,0 +1,31 @@
+{
+  "name": "elm-post-render",
+  "version": "1.0.0",
+  "description": "Code sample demonstrating post render hooks in elm.",
+  "main": "index.js",
+  "scripts": {
+    "start": "elm-server src/Main.elm --output dist/Main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/maxgurewitz/elm-post-render.git"
+  },
+  "keywords": [
+    "elm",
+    "sample",
+    "render",
+    "effect",
+    "post",
+    "hook",
+    "mount"
+  ],
+  "author": "Max Gurewitz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/maxgurewitz/elm-post-render/issues"
+  },
+  "homepage": "https://github.com/maxgurewitz/elm-post-render#readme",
+  "devDependencies": {
+    "elm-server": "^0.2.1"
+  }
+}
