@@ -4,6 +4,7 @@
   "description": "Code sample demonstrating post render hooks in elm.",
   "main": "index.js",
   "scripts": {
+    "deploy": "gh-pages -d dist",
     "start": "elm-server src/Main.elm --watch dist --output dist/Main.js"
   },
   "repository": {
