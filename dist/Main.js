@@ -10702,25 +10702,28 @@ Elm.Main.make = function (_elm) {
    var view = F2(function (address,model) {
       var boxes = A2($List.repeat,model.count,A2($Html.input,_U.list([$Html$Attributes.$class("box")]),_U.list([])));
       var incrementButton = A2($Html.button,_U.list([A2($Html$Events.onClick,address,Increment)]),_U.list([$Html.text("increment")]));
-      var _p0 = A2($Debug.log,"boop","bam");
       return A2($Html.div,_U.list([]),A2($List._op["::"],incrementButton,boxes));
    });
    var incrementTask = $Effects.task($Task.succeed(Increment));
-   var init = {ctor: "_Tuple2",_0: {count: 1,renderedCount: 0},_1: incrementTask};
-   var onRenderIncrement = $Effects.tick(function (_p1) {    var _p2 = A2($Debug.log,"loc1","loc2");return RenderedIncrement;});
+   var onRenderIncrement = $Effects.tick($Basics.always(RenderedIncrement));
+   var init = {ctor: "_Tuple2",_0: {count: 1,renderedCount: 0},_1: onRenderIncrement};
    var update = F2(function (action,model) {
-      var _p3 = action;
-      if (_p3.ctor === "Increment") {
-            var _p4 = A2($Debug.log,"moop","doop");
+      var _p0 = action;
+      if (_p0.ctor === "Increment") {
             return {ctor: "_Tuple2",_0: _U.update(model,{count: model.count + 1}),_1: onRenderIncrement};
          } else {
-            var _p5 = A2($Debug.log,"foo","bar");
             return {ctor: "_Tuple2",_0: _U.update(model,{renderedCount: model.count}),_1: $Effects.none};
          }
    });
    var Model = F2(function (a,b) {    return {count: a,renderedCount: b};});
    var app = $StartApp.start({init: init,update: update,view: view,inputs: _U.list([])});
    var main = app.html;
+   var tasks = Elm.Native.Task.make(_elm).performSignal("tasks",app.tasks);
+   var setFocus = Elm.Native.Port.make(_elm).outboundSignal("setFocus",
+   function (v) {
+      return v;
+   },
+   $Signal.dropRepeats(A2($Signal.map,function (_) {    return _.renderedCount;},app.model)));
    return _elm.Main.values = {_op: _op
                              ,main: main
                              ,app: app

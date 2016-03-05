@@ -9,8 +9,9 @@
   <script src="Main.js"></script>
   <script>
     var app = Elm.fullscreen(Elm.Main);
+
+    app.ports.setFocus.subscribe(function(index) {
+      document.getElementsByClassName('box')[index - 1].focus();
+    });
   </script>
-    <!-- app.ports.setFocus.subscribe(function(index) { -->
-    <!--   document.getElementsByClassName('box')[index].focus(); -->
-    <!-- }); -->
 </body>
