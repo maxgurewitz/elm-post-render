@@ -1,6 +1,16 @@
 <body>
+  <style>
+    .box {
+      width: 30px;
+      height: 30px;
+      display: inline-block;
+    }
+  </style>
   <script src="Main.js"></script>
   <script>
-    Elm.fullscreen(Elm.Main);
+    var app = Elm.fullscreen(Elm.Main);
   </script>
+    <!-- app.ports.setFocus.subscribe(function(index) { -->
+    <!--   document.getElementsByClassName('box')[index].focus(); -->
+    <!-- }); -->
 </body>
