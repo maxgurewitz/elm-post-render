@@ -43,8 +43,6 @@ init =
   , onRenderIncrement
   )
 
-incrementTask = FX.task (Task.succeed Increment)
-
 view address model =
   let
     incrementButton = button [ onClick address Increment ] [ text "increment" ]
